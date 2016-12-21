@@ -125,8 +125,3 @@ require('layout/header.php');
 
 
 </div>
-
-<?php
-//include header template
-require('layout/footer.php');
-?>

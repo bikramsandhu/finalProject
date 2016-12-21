@@ -156,7 +156,3 @@ require('layout/header.php');
 	</div>
 
 </div>
-
-<?php
-require('layout/footer.php');
-?>

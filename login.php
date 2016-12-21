@@ -91,9 +91,3 @@ require('layout/header.php');
 
 
 </div>
-
-
-<?php
-
-require('layout/footer.php');
-?>

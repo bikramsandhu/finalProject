@@ -25,7 +25,6 @@ require('layout/header.php');
 <?php
 $stmt = "SELECT * FROM members WHERE username = '".$_SESSION['username']."'";
 foreach ($db->query($stmt) as $row) {
-
   echo '<div style="display:table;width:400px;height:60px;">';
   echo '<div style="padding-center:10px;display:table-cell;height:30px;color:red">Username:' . $row['username'];
   echo '<br><br>Email Address: ' . $row['email'] . '</div>';
@@ -48,7 +47,3 @@ foreach ($db->query($stmt) as $row) {
     </div>
   </div>
 </div>
-
-<?php
-require('layout/footer.php');
-?>
