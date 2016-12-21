@@ -27,7 +27,7 @@ $title = 'Login';
 
 require('layout/header.php');
 ?>
-//added logo
+<!added logo>
 <img src="http://archives.njit.edu/vhlib/images/njit_logo.gif" alt="NJIT logo">
 <div class="container">
 
@@ -64,7 +64,7 @@ require('layout/header.php');
 
 
 				?>
-				//created fields for login
+				<!created fields for login>
 				<div class="form-group">
 					<center><input type="text" name="username" id="username" class="form-control input-lg" placeholder="User Name" value="<?php if(isset($error)){ echo $_POST['username']; } ?>" tabindex="1"></center>
 				</div>
