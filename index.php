@@ -103,7 +103,7 @@ require('layout/header.php');
 
 	<div class="row">
 
-	//each of the values to my form
+	<--!	each of the values to my form	--->
 			<form role="form" method="post" action="" autocomplete="off">
 				<center><h2 style="color:red">Please sign up to our website today!</h2></center>
 				<center><p style="color:white">Do you already have an account? Click here to <input type="button" value="Login"
