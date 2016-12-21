@@ -2,8 +2,10 @@
 
 require_once('includes/config.php');
 
+//checks if already logged in, if so then go to homepage
 if( $user->is_logged_in() ){ header('Location: index.php'); }
 
+//processes the login info from form
 if(isset($_POST['submit'])){
 
 	$username = $_POST['username'];
@@ -15,16 +17,17 @@ if(isset($_POST['submit'])){
 		exit;
 
 	} else {
-		$error[] = 'Wrong username/password or unactivated account';
+		$error[] = 'Wrong username/password or inactivated account';
 	}
 
 }
 
+//page title
 $title = 'Login';
 
 require('layout/header.php');
 ?>
-
+//added logo
 <img src="http://archives.njit.edu/vhlib/images/njit_logo.gif" alt="NJIT logo">
 <div class="container">
 
@@ -35,12 +38,14 @@ require('layout/header.php');
 
 				<?php
 
+				//prints out the errors onto the page, if any
 				if(isset($error)){
 					foreach($error as $error){
 						echo '<center><p style="color:#4FFF33" class="bg-danger">'.$error.'</p></center>';
 					}
 				}
 
+				//checks the action, and prints the output to the page, uses strategy
 				if(isset($_GET['action'])){
 
 					switch ($_GET['action']) {
@@ -59,7 +64,7 @@ require('layout/header.php');
 
 
 				?>
-
+				//created fields for login
 				<div class="form-group">
 					<center><input type="text" name="username" id="username" class="form-control input-lg" placeholder="User Name" value="<?php if(isset($error)){ echo $_POST['username']; } ?>" tabindex="1"></center>
 				</div>
