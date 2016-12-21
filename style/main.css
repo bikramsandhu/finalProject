@@ -1,0 +1,42 @@
+.bg-danger, .bg-success {
+	padding: 0 5px;
+}
+
+a {
+	color: #EF1F2F;
+	text-decoration: none;
+}
+
+body{
+	background-color: #3E0D6B;
+}
+input#firstname{
+	position:relative;
+	width:300px;
+	padding:10px;
+}
+input#lastname{
+	position:relative;
+	width:300px;
+	padding:10px;
+}
+input#username{
+	position:relative;
+	width:300px;
+	padding:10px;
+}
+input#email{
+	position:relative;
+	width:300px;
+	padding:10px;
+}
+input#password{
+	position:relative;
+	width:300px;
+	padding:10px;
+}
+input#passwordConfirm{
+	position:relative;
+	width:300px;
+	padding:10px;
+}
