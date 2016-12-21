@@ -2,7 +2,7 @@
 
 //if logged in redirect to members page
 if( $user->is_logged_in() ){ header('Location: memberpage.php'); }
-
+//uses fetch which is factory
 $stmt = $db->prepare('SELECT resetToken, resetComplete FROM members WHERE resetToken = :token');
 $stmt->execute(array(':token' => $_GET['key']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -94,11 +94,11 @@ require('layout/header.php');
 							echo '<center><h2 class="bg-success">Your account is now active you may now log in.</h2></center>';
 							break;
 						case 'reset':
-							echo '<center><h2 style="color:#4FFF33" "class="bg-success">Please check your inbox for a reset link.</h2>";
+							echo '<center><h2 "class="bg-success">Please check your inbox for a reset link.</h2>';
 							break;
 					}
 					?>
-					
+
 					<div class="row">
 						<div class="col-xs-6 col-sm-6 col-md-6">
 							<div class="form-group">

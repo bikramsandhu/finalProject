@@ -10,6 +10,7 @@ if(isset($_POST['submit'])){
 	if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
 	    $error[] = 'Please enter a VALID email address';
 	} else {
+		//uses fetch which is factory
 		$stmt = $db->prepare('SELECT email FROM members WHERE email = :email');
 		$stmt->execute(array(':email' => $_POST['email']));
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);

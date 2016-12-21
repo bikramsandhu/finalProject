@@ -9,6 +9,7 @@ if(isset($_POST['submit'])){
 	if(strlen($_POST['username']) < 3){
 		$error[] = 'Username is too short.';
 	} else {
+		//uses fetch which is factory method
 		$stmt = $db->prepare('SELECT username FROM members WHERE username = :username');
 		$stmt->execute(array(':username' => $_POST['username']));
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -35,6 +36,7 @@ if(isset($_POST['submit'])){
 	if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
 	    $error[] = 'Please enter a valid email address';
 	} else {
+		//uses fetch which is a factory method
 		$stmt = $db->prepare('SELECT email FROM members WHERE email = :email');
 		$stmt->execute(array(':email' => $_POST['email']));
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
