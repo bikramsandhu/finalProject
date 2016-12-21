@@ -1,9 +1,11 @@
 <?php require('includes/config.php');
 
+//check if logged in, if so redirect to member page
 if( $user->is_logged_in() ){ header('Location: memberpage.php'); }
 
 if(isset($_POST['submit'])){
 
+//check if username is greater than 3 letters
 	if(strlen($_POST['username']) < 3){
 		$error[] = 'Username is too short.';
 	} else {
@@ -29,6 +31,7 @@ if(isset($_POST['submit'])){
 		$error[] = 'Passwords do not match.';
 	}
 
+//email validation
 	if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
 	    $error[] = 'Please enter a valid email address';
 	} else {
@@ -42,15 +45,17 @@ if(isset($_POST['submit'])){
 
 	}
 
-
+//check for errors, if no errors then proceed
 	if(!isset($error)){
 
+		//hash the password and post
 		$hashedpassword = $user->password_hash($_POST['password'], PASSWORD_BCRYPT);
 
+		//create the random activation code
 		$activation = md5(uniqid(rand(),true));
 
 		try {
-
+			//insert into database
 			$stmt = $db->prepare('INSERT INTO members (username,password,email,active) VALUES (:username, :password, :email, :active)');
 			$stmt->execute(array(
 				':username' => $_POST['username'],
@@ -60,6 +65,7 @@ if(isset($_POST['submit'])){
 			));
 			$id = $db->lastInsertId('memberID');
 
+			//send the email confirmation
 			$to = $_POST['email'];
 			$subject = "Confirm your registration to Bikram Sandhu's website!";
 			$body = "<p>We have received your registration credentials. Please refer to the below steps to activate your registration profile!</p>
@@ -73,9 +79,11 @@ if(isset($_POST['submit'])){
 			$mail->body($body);
 			$mail->send();
 
+			//redirect to index page
 			header('Location: index.php?action=joined');
 			exit;
 
+			//show the error message if things arent working
 		} catch(PDOException $e) {
 		    $error[] = $e->getMessage();
 		}
@@ -83,6 +91,7 @@ if(isset($_POST['submit'])){
 	}
 
 }
+//added title of webpage
 $title = 'Welcome to Bikram Sandhus Login Page';
 
 require('layout/header.php');
@@ -94,7 +103,7 @@ require('layout/header.php');
 
 	<div class="row">
 
-
+	//each of the values to my form
 			<form role="form" method="post" action="" autocomplete="off">
 				<center><h2 style="color:red">Please sign up to our website today!</h2></center>
 				<center><p style="color:white">Do you already have an account? Click here to <input type="button" value="Login"
